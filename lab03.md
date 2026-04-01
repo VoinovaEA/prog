@@ -192,8 +192,17 @@ graph TB
 | **Терминал 4** | `python3 producer.py words "Текст для подсчета"` | Отправка задачи на подсчет слов |
 
 **Результаты выполнения:**
+**Задание 1:**
 
 <img width="891" height="748" alt="image" src="https://github.com/user-attachments/assets/37a81cf1-7501-4ef0-b5ee-0e0615738ac3" />
+
+**Задание 2:**
+
+<img width="586" height="155" alt="image" src="https://github.com/user-attachments/assets/e3cbf583-bc14-488a-9590-9ab6a80b5276" />
+
+**Задание 3:**
+
+<img width="567" height="131" alt="image" src="https://github.com/user-attachments/assets/01ef0e95-d419-4165-a6a2-bae9ebfd9531" />
 
 ## Выводы
 
