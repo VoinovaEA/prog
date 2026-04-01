@@ -39,6 +39,35 @@ base64 строки.
 количество слов в тексте
 и возвращает число.
 ---
+## Архитектура проекта. ##
+
+  ```mermaid
+graph TB
+    subgraph "Терминал 4"
+        D1["producer.py currency<br/>USD RUB 100"]
+        D2["producer.py qr<br/>Hello World"]
+        D3["producer.py words<br/>Текст для подсчета"]
+    end
+    
+    subgraph "Терминал 2"
+        B["RabbitMQ Broker<br/>docker-compose up -d<br/>task_queue"]
+    end
+    
+    subgraph "Терминал 3"
+        C["Consumer<br/>python3 consumer.py<br/>слушает очередь"]
+    end
+    
+    subgraph "Терминал 1"
+        A["gRPC Server<br/>python3 grpc_server.py<br/>порт 50051"]
+    end
+    
+    D1 -->|JSON| B
+    D2 -->|JSON| B
+    D3 -->|JSON| B
+    B -->|доставка| C
+    C -->|вызов методов| A
+    A -->|результат| C
+```
 
 ## Часть 1. Синхронное взаимодействие (gRPC).
 
@@ -135,35 +164,6 @@ python3 grpc_server.py
 
 <img width="895" height="871" alt="image" src="https://github.com/user-attachments/assets/51013f84-0729-41b8-a86f-1df553ffd347" />
 
-## 10.Архитектура проекта. ##
-
-  ```mermaid
-graph TB
-    subgraph "Терминал 4"
-        D1["producer.py currency<br/>USD RUB 100"]
-        D2["producer.py qr<br/>Hello World"]
-        D3["producer.py words<br/>Текст для подсчета"]
-    end
-    
-    subgraph "Терминал 2"
-        B["RabbitMQ Broker<br/>docker-compose up -d<br/>task_queue"]
-    end
-    
-    subgraph "Терминал 3"
-        C["Consumer<br/>python3 consumer.py<br/>слушает очередь"]
-    end
-    
-    subgraph "Терминал 1"
-        A["gRPC Server<br/>python3 grpc_server.py<br/>порт 50051"]
-    end
-    
-    D1 -->|JSON| B
-    D2 -->|JSON| B
-    D3 -->|JSON| B
-    B -->|доставка| C
-    C -->|вызов методов| A
-    A -->|результат| C
-```
 
 ## 11.Структура проекта. ##
    
