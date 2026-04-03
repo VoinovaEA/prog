@@ -41,7 +41,8 @@ base64 строки.
 ---
 ## Архитектура проекта. ##
 
-  ```mermaid
+
+```mermaid
 graph TB
     subgraph "Терминал 4"
         D1["producer.py currency<br/>USD RUB 100"]
@@ -50,25 +51,24 @@ graph TB
     end
     
     subgraph "Терминал 2"
-        B["RabbitMQ Broker<br/>docker-compose up -d<br/>task_queue"]
+        B["CloudAMQP<br/>RabbitMQ в облаке<br/>task_queue"]
     end
     
     subgraph "Терминал 3"
-        C["Consumer<br/>python3 consumer.py<br/>слушает очередь"]
+        C["Consumer<br/>python consumer.py<br/>слушает очередь"]
     end
     
     subgraph "Терминал 1"
-        A["gRPC Server<br/>python3 grpc_server.py<br/>порт 50051"]
+        A["gRPC Server<br/>python grpc_server.py<br/>порт 50051"]
     end
     
-    D1 -->|JSON| B
-    D2 -->|JSON| B
-    D3 -->|JSON| B
+    D1 -->|JSON запрос| B
+    D2 -->|QR запрос| B
+    D3 -->|текст для подсчета| B
     B -->|доставка| C
-    C -->|вызов методов| A
+    C -->|вызов gRPC| A
     A -->|результат| C
 ```
-
 ## Часть 1. Синхронное взаимодействие (gRPC).
 
 На этом этапе создаются два сервиса, общающихся напрямую в режиме "запрос-ответ".
