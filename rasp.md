@@ -721,4 +721,5 @@ print("\n✅ Рекомендуемый размер сети: до 200 узло
    - Для экономии трафика: 10-50 узлов
    - Компромиссный вариант: 100-200 узлов (РЕКОМЕНДУЕТСЯ)
 
-
+# Файл в Colab.
+https://colab.research.google.com/drive/1rrvszAMajRVvGw4rZmsXfDWEu02ZE1O9?usp=sharing
