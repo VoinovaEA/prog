@@ -268,7 +268,7 @@ Y: sum(amount) (сумма сделок)
 <img width="1245" height="509" alt="image" src="https://github.com/user-attachments/assets/bb34be47-18a6-4baf-a836-e5bb774bf7cc" />
 
 Создан дашборд "CRM аналитика", объединяющий все чарты для комплексного анализа данных.
-https://datalens.ru/rvle7l7gdtbeb-novyy-dashbord
+https://datalens.yandex/rvle7l7gdtbeb
 ---
 
 ## 9. Выводы
